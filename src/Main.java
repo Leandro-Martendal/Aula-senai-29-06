@@ -11,6 +11,7 @@ public class Main {
         while (exit){
             Scanner scanner = new Scanner(System.in);
 
+            //Abaixo, menu - Below, menu
             System.out.println("Insira a opção desejada:");
             System.out.println("1 - Cadastrar novo aluno");
             System.out.println("2 - Buscar aluno");
