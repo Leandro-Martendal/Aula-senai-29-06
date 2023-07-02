@@ -11,22 +11,20 @@ public class Main {
         while (exit){
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Seleciona a opção");
-            System.out.println("1 - Cadastrar");
-            System.out.println("2 - Buscar");
-            System.out.println("3 - Sair");
+            System.out.println("Insira a opção desejada:");
+            System.out.println("1 - Cadastrar novo aluno");
+            System.out.println("2 - Buscar aluno");
+            System.out.println("3 - Encerrar");
             int option = scanner.nextInt();
             switch (option){
                 case 1 :
                     signStudent(students);
                     break;
-
                 case 2 :
                     System.out.println("Qual o nome que deseja buscar?");
                     String nameToFind = scanner.next();
                     findStudent(students, nameToFind);
                     break;
-
                 case 3 :
                     exit = false;
                     break;
@@ -34,6 +32,7 @@ public class Main {
         }
     }
 
+    //Cadastrar estudante - Register student
     private static void signStudent(List<Person> students){
         Person student = new Person();
         Scanner scanner = new Scanner(System.in);
@@ -44,6 +43,7 @@ public class Main {
         System.out.println("Obrigado por digitar o nome completo do " + student.name);
     }
 
+    //Buscar estudante - Search student
     private static void findStudent(List<Person> students, String studentName) {
         boolean finding = true;
 
