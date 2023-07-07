@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
-   public static List<Person> students = new ArrayList<Person>();
+   public static List<Person> students = new ArrayList<>();
 
     public static void main(String[] args) {
 
@@ -17,7 +17,9 @@ public class Main {
             System.out.println("2 - Buscar aluno");
             System.out.println("3 - Remover aluno");
             System.out.println("4 - Editar aluno");
-            System.out.println("5 - Encerrar");
+            System.out.println("5 - Exibir todos os alunos");
+            System.out.println("6 - Quantidade de alunos");
+            System.out.println("7 - Encerrar");
             int option = scanner.nextInt();
             switch (option){
                 case 1:
@@ -38,6 +40,14 @@ public class Main {
                     break;
 
                 case 5:
+                    listStudent();
+                    break;
+
+                case 6:
+                    genderStudent();
+                    break;
+
+                    case 7:
                     exit = false;
                     break;
             }
@@ -51,8 +61,12 @@ public class Main {
 
         System.out.println("Digite o nome completo do estudante:");
         student.name = scanner.next();
+        System.out.println("Qual a idade do estudante?");
+        student.idade = Integer.parseInt(scanner.next());
+        System.out.println("Qual o sexo do estudante?");
+        student.sexo = scanner.next();
         students.add(student);
-        System.out.println("Obrigado por digitar o nome completo do " + student.name + ".");
+        System.out.println("Obrigado por digitar os dados do " + student.name + ".");
     }
 
     //Buscar estudante - Search student
@@ -64,11 +78,12 @@ public class Main {
             Person student = students.get(count);
             if(student.name.equals(studentName)){
                 position = count;
-                System.out.println("Consegui encontrar o " + studentName + ".");
+
+                System.out.println("Consegui encontrar o " + studentName);
                 finding = false;
             }
         }
-        if(finding == true) {
+        if(finding) {
             System.out.println("Não foi possível encontrar o " + studentName + ".");
         }
     return position;
@@ -95,6 +110,50 @@ public class Main {
             name = scanner.next();
             //studants.get(position.intValue()).name = name;
             p1.name = name;
+        }
+    }
+
+    //Exibir todos os estudantes - Show all students
+    private static void listStudent(){
+        for(int i = 0; i < students.size(); i++) {
+            System.out.println(students.get(i).name + " " + students.get(i).idade + " " + students.get(i).sexo);
+        }
+    }
+
+    //Exibe a quantidade de alunos por sexo e o total - Displays the number of students by gender and the total
+    private static void genderStudent(){
+        int m = 0;
+        int f = 0;
+        int t = 0;
+        for(int i = 0; i < students.size(); i++){
+            if(students.get(i).sexo.equals("Masculino")){
+                m++;
+                t++;
+            }else{
+                f++;
+                t++;
+            }
+        }
+        if(m >= 2){
+            System.out.println("Temos " + m + " homens");
+        } else if( m == 1){
+            System.out.println("Temos " + m + " homem");
+        } else{
+            System.out.println("Não temos homens");
+        }
+        if(f >= 2){
+            System.out.println("Temos " + f + " mulheres");
+        } else if( f == 1){
+            System.out.println("Temos " + f + " mulher");
+        } else{
+            System.out.println("Não temos mulheres");
+        }
+        if(t >= 2){
+            System.out.println("Temos um total de " + t + " alunos");
+        } else if( t == 1){
+            System.out.println("Temos um aluno");
+        } else{
+            System.out.println("Não temos alunos");
         }
     }
 }
